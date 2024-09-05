@@ -1,0 +1,393 @@
+<http://www.semanticweb.org/OntoDisInfo/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<http://www.semanticweb.org/OntoDisInfo/> <http://www.w3.org/2002/07/owl#versionIRI> <http://www.semanticweb.org/OntoDisInfo/2.0> .
+<http://www.semanticweb.org/OntoDisInfo/> <http://purl.org/dc/elements/1.1/description> "The ontology systematically represents the most important profile-based features for Fake Account Detection." .
+<http://www.semanticweb.org/OntoDisInfo/> <http://purl.org/dc/terms/author> "Mirena Kurteva" .
+<http://www.semanticweb.org/OntoDisInfo/> <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/" .
+<http://www.semanticweb.org/OntoDisInfo/> <http://www.w3.org/2002/07/owl#versionInfo> "Version 2" .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/elements/1.1/decription
+<http://purl.org/dc/elements/1.1/decription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/author
+<http://purl.org/dc/terms/author> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/terms/liscense
+<http://purl.org/dc/terms/liscense> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith
+<http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith> <http://www.w3.org/2002/07/owl#inverseOf> <http://www.semanticweb.org/OntoDisInfo/hasActivity> .
+<http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> .
+<http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to any Twitter account performing some network activity" .
+<http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith> <http://www.w3.org/2000/01/rdf-schema#label> "activity_AssociatedWith" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/belongsTo
+<http://www.semanticweb.org/OntoDisInfo/belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/belongsTo> <http://www.w3.org/2002/07/owl#inverseOf> <http://www.semanticweb.org/OntoDisInfo/hasAccount> .
+<http://www.semanticweb.org/OntoDisInfo/belongsTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/belongsTo> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/belongsTo> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/User> .
+<http://www.semanticweb.org/OntoDisInfo/belongsTo> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to the Twitter account beloging to some user" .
+<http://www.semanticweb.org/OntoDisInfo/belongsTo> <http://www.w3.org/2000/01/rdf-schema#label> "belongs_To" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/hasAccount
+<http://www.semanticweb.org/OntoDisInfo/hasAccount> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasAccount> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasAccount> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/User> .
+<http://www.semanticweb.org/OntoDisInfo/hasAccount> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/hasAccount> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to a user having a Twitter account" .
+<http://www.semanticweb.org/OntoDisInfo/hasAccount> <http://www.w3.org/2000/01/rdf-schema#label> "has_Account" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/hasActivity
+<http://www.semanticweb.org/OntoDisInfo/hasActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasActivity> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/hasActivity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> .
+<http://www.semanticweb.org/OntoDisInfo/hasActivity> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to the activity of a Twitter account" .
+<http://www.semanticweb.org/OntoDisInfo/hasActivity> <http://www.w3.org/2000/01/rdf-schema#label> "has_Activity" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers
+<http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers> <http://www.w3.org/2002/07/owl#inverseOf> <http://www.semanticweb.org/OntoDisInfo/metricsBelongTo> .
+<http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics> .
+<http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to the fact that all Twitter account have profile information metrics" .
+<http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers> <http://www.w3.org/2000/01/rdf-schema#label> "has_ProfileIndentifiers" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/hasStatuses
+<http://www.semanticweb.org/OntoDisInfo/hasStatuses> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasStatuses> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasStatuses> <http://www.w3.org/2002/07/owl#inverseOf> <http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring> .
+<http://www.semanticweb.org/OntoDisInfo/hasStatuses> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasStatuses> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> .
+<http://www.semanticweb.org/OntoDisInfo/hasStatuses> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/PostsInteraction> .
+<http://www.semanticweb.org/OntoDisInfo/hasStatuses> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to the fact social activity includes interaction of users with posting or posts" .
+<http://www.semanticweb.org/OntoDisInfo/hasStatuses> <http://www.w3.org/2000/01/rdf-schema#label> "has_Statuses" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/hasVerification
+<http://www.semanticweb.org/OntoDisInfo/hasVerification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasVerification> <http://www.w3.org/2002/07/owl#inverseOf> <http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy> .
+<http://www.semanticweb.org/OntoDisInfo/hasVerification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/hasVerification> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/hasVerification> <http://www.w3.org/2000/01/rdf-schema#range> <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> .
+<http://www.semanticweb.org/OntoDisInfo/hasVerification> <http://www.w3.org/2000/01/rdf-schema#comment> "refers that a Twitter account has verification performed by specific personal data" .
+<http://www.semanticweb.org/OntoDisInfo/hasVerification> <http://www.w3.org/2000/01/rdf-schema#label> "has_Verification" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring
+<http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/PostsInteraction> .
+<http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> .
+<http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to the process of post interaction of an Account" .
+<http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring> <http://www.w3.org/2000/01/rdf-schema#label> "includes_StatusesCreationDuring" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring
+<http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring> <http://www.w3.org/2002/07/owl#inverseOf> <http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite> .
+<http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/FavouriteTweets> .
+<http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/PostsInteraction> .
+<http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to the process of marking tweets as favourite during some post interaction which may include creating or liking them" .
+<http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring> <http://www.w3.org/2000/01/rdf-schema#label> "isSelected_AsFavouriteDuring" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/metricsBelongTo
+<http://www.semanticweb.org/OntoDisInfo/metricsBelongTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/metricsBelongTo> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/metricsBelongTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/metricsBelongTo> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics> .
+<http://www.semanticweb.org/OntoDisInfo/metricsBelongTo> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/metricsBelongTo> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to the idenfitification metrics per twitter account" .
+<http://www.semanticweb.org/OntoDisInfo/metricsBelongTo> <http://www.w3.org/2000/01/rdf-schema#label> "metrics_BelongTo" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite
+<http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/PostsInteraction> .
+<http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/FavouriteTweets> .
+<http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to the process of post inteaction which including marking favourite tweets" .
+<http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite> <http://www.w3.org/2000/01/rdf-schema#label> "selectedAs_Favourite" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy
+<http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> .
+<http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy> <http://www.w3.org/2000/01/rdf-schema#comment> "refers to the process of using personla data by Twitter accounts for verification" .
+<http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy> <http://www.w3.org/2000/01/rdf-schema#label> "usedFor_VerificationBy" .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/OntoDisInfo/accountName
+<http://www.semanticweb.org/OntoDisInfo/accountName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/accountName> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/accountName> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<http://www.semanticweb.org/OntoDisInfo/accountName> <http://purl.org/dc/elements/1.1/description> "refers to a Twitter account name" .
+<http://www.semanticweb.org/OntoDisInfo/accountName> <http://www.w3.org/2000/01/rdf-schema#comment> "distincs account names that resemble the username of an account" .
+<http://www.semanticweb.org/OntoDisInfo/accountName> <http://www.w3.org/2000/01/rdf-schema#label> "accountName" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/favourites_count
+<http://www.semanticweb.org/OntoDisInfo/favourites_count> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/favourites_count> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/FavouriteTweets> .
+<http://www.semanticweb.org/OntoDisInfo/favourites_count> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<http://www.semanticweb.org/OntoDisInfo/favourites_count> <http://purl.org/dc/elements/1.1/description> "refers to marked posts or tweets as favourite" .
+<http://www.semanticweb.org/OntoDisInfo/favourites_count> <http://www.w3.org/2000/01/rdf-schema#label> "favouritesCount" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/followers_count
+<http://www.semanticweb.org/OntoDisInfo/followers_count> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/followers_count> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/Followers> .
+<http://www.semanticweb.org/OntoDisInfo/followers_count> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<http://www.semanticweb.org/OntoDisInfo/followers_count> <http://purl.org/dc/elements/1.1/description> "refers to number of followers of a Twitter account" .
+<http://www.semanticweb.org/OntoDisInfo/followers_count> <http://www.w3.org/2000/01/rdf-schema#label> "followersCount" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/friends_count
+<http://www.semanticweb.org/OntoDisInfo/friends_count> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/friends_count> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/Friends> .
+<http://www.semanticweb.org/OntoDisInfo/friends_count> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<http://www.semanticweb.org/OntoDisInfo/friends_count> <http://purl.org/dc/elements/1.1/description> "refers to the number of friends of a Twitter account" .
+<http://www.semanticweb.org/OntoDisInfo/friends_count> <http://www.w3.org/2000/01/rdf-schema#label> "friendsCount" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/is_fake
+<http://www.semanticweb.org/OntoDisInfo/is_fake> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/is_fake> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/is_fake> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticweb.org/OntoDisInfo/is_fake> <http://purl.org/dc/elements/1.1/description> "refers to identified state of a Twitter account being Fake" .
+<http://www.semanticweb.org/OntoDisInfo/is_fake> <http://www.w3.org/2000/01/rdf-schema#label> "isFake" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/is_legitimate
+<http://www.semanticweb.org/OntoDisInfo/is_legitimate> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/is_legitimate> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/is_legitimate> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticweb.org/OntoDisInfo/is_legitimate> <http://purl.org/dc/elements/1.1/description> "refers to identified state of a Twitter account being Legitimate" .
+<http://www.semanticweb.org/OntoDisInfo/is_legitimate> <http://www.w3.org/2000/01/rdf-schema#label> "isLegitimate" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/listedcount
+<http://www.semanticweb.org/OntoDisInfo/listedcount> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/listedcount> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership> .
+<http://www.semanticweb.org/OntoDisInfo/listedcount> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<http://www.semanticweb.org/OntoDisInfo/listedcount> <http://purl.org/dc/elements/1.1/description> "refers to the number of public lists the user account participates into" .
+<http://www.semanticweb.org/OntoDisInfo/listedcount> <http://www.w3.org/2000/01/rdf-schema#label> "listedCount" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/openedAccounts_count
+<http://www.semanticweb.org/OntoDisInfo/openedAccounts_count> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/openedAccounts_count> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<http://www.semanticweb.org/OntoDisInfo/openedAccounts_count> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/User> .
+<http://www.semanticweb.org/OntoDisInfo/openedAccounts_count> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<http://www.semanticweb.org/OntoDisInfo/openedAccounts_count> <http://purl.org/dc/elements/1.1/description> "refers to the number of different account a Twitter user has" .
+<http://www.semanticweb.org/OntoDisInfo/openedAccounts_count> <http://www.w3.org/2000/01/rdf-schema#label> "openedaccountsCount" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/statuses_count
+<http://www.semanticweb.org/OntoDisInfo/statuses_count> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/statuses_count> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/statuses_count> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#integer> .
+<http://www.semanticweb.org/OntoDisInfo/statuses_count> <http://purl.org/dc/elements/1.1/description> "refers to the number of posts of a Twitter Account" .
+<http://www.semanticweb.org/OntoDisInfo/statuses_count> <http://www.w3.org/2000/01/rdf-schema#label> "statusesCount" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/userId
+<http://www.semanticweb.org/OntoDisInfo/userId> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/userId> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/User> .
+<http://www.semanticweb.org/OntoDisInfo/userId> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<http://www.semanticweb.org/OntoDisInfo/userId> <http://purl.org/dc/elements/1.1/description> "refers to user identifier" .
+<http://www.semanticweb.org/OntoDisInfo/userId> <http://www.w3.org/2000/01/rdf-schema#label> "userId" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/verified
+<http://www.semanticweb.org/OntoDisInfo/verified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.semanticweb.org/OntoDisInfo/verified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#FunctionalProperty> .
+<http://www.semanticweb.org/OntoDisInfo/verified> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/verified> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<http://www.semanticweb.org/OntoDisInfo/verified> <http://purl.org/dc/elements/1.1/description> "refers to account authenticated by Twitter as belonging to the person," .
+<http://www.semanticweb.org/OntoDisInfo/verified> <http://www.w3.org/2000/01/rdf-schema#label> "verified" .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/OntoDisInfo/AccountType
+<http://www.semanticweb.org/OntoDisInfo/AccountType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/AccountType> <http://purl.org/dc/elements/1.1/description> "The Account Type is categorised into Real, Fake and Suspicious Twitter Accounts." .
+<http://www.semanticweb.org/OntoDisInfo/AccountType> <http://www.w3.org/2000/01/rdf-schema#comment> "This defines the status of a social media account." .
+<http://www.semanticweb.org/OntoDisInfo/AccountType> <http://www.w3.org/2000/01/rdf-schema#label> "Account Type" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/FakeAccount
+<http://www.semanticweb.org/OntoDisInfo/FakeAccount> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/FakeAccount> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/FakeAccount> <http://purl.org/dc/elements/1.1/description> "The account is reported Fake due to detected suspecious activity." .
+<http://www.semanticweb.org/OntoDisInfo/FakeAccount> <http://www.w3.org/2000/01/rdf-schema#label> "Fake Account" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/FavouriteTweets
+<http://www.semanticweb.org/OntoDisInfo/FavouriteTweets> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/FavouriteTweets> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/PostsInteraction> .
+<http://www.semanticweb.org/OntoDisInfo/FavouriteTweets> <http://purl.org/dc/elements/1.1/description> "This  refers to the number of times a piece of content—such as a tweet, post, or photo—has been liked or marked as a favorite by others." .
+<http://www.semanticweb.org/OntoDisInfo/FavouriteTweets> <http://www.w3.org/2000/01/rdf-schema#label> "Favourite Tweets" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/Followers
+<http://www.semanticweb.org/OntoDisInfo/Followers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/Followers> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/FollowingActivity> .
+<http://www.semanticweb.org/OntoDisInfo/Followers> <http://purl.org/dc/elements/1.1/description> "This is the number of Twitter followers who have chosen to follow another user account on the platform." .
+<http://www.semanticweb.org/OntoDisInfo/Followers> <http://www.w3.org/2000/01/rdf-schema#label> "Followers" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/FollowingActivity
+<http://www.semanticweb.org/OntoDisInfo/FollowingActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/FollowingActivity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> .
+<http://www.semanticweb.org/OntoDisInfo/FollowingActivity> <http://purl.org/dc/elements/1.1/description> "refers to different types of connections a user has" .
+<http://www.semanticweb.org/OntoDisInfo/FollowingActivity> <http://www.w3.org/2000/01/rdf-schema#label> "Following Activity" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/Friends
+<http://www.semanticweb.org/OntoDisInfo/Friends> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/Friends> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/FollowingActivity> .
+<http://www.semanticweb.org/OntoDisInfo/Friends> <http://purl.org/dc/elements/1.1/description> "This is the number of Friends per Twitter Account" .
+<http://www.semanticweb.org/OntoDisInfo/Friends> <http://www.w3.org/2000/01/rdf-schema#label> "Friends" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/LegitimateAccount
+<http://www.semanticweb.org/OntoDisInfo/LegitimateAccount> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/LegitimateAccount> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/LegitimateAccount> <http://purl.org/dc/elements/1.1/description> "The account is detected as Real due to no suspicious activity pattern occurance." .
+<http://www.semanticweb.org/OntoDisInfo/LegitimateAccount> <http://www.w3.org/2000/01/rdf-schema#label> "Legitimate Account" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics
+<http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics> <http://purl.org/dc/elements/1.1/description> "This class describes the personal information about the user" .
+<http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics> <http://www.w3.org/2000/01/rdf-schema#label> "Online Identification Metrics" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/PostsInteraction
+<http://www.semanticweb.org/OntoDisInfo/PostsInteraction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/PostsInteraction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/TweetsIteraction> .
+<http://www.semanticweb.org/OntoDisInfo/PostsInteraction> <http://purl.org/dc/elements/1.1/description> "refers to engagement with tweet content" .
+<http://www.semanticweb.org/OntoDisInfo/PostsInteraction> <http://www.w3.org/2000/01/rdf-schema#label> "Post Interaction" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership
+<http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> .
+<http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership> <http://purl.org/dc/elements/1.1/description> "This refers to the number of times a Twitter user has been added to a list on a social media platform or has participated in groups" .
+<http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership> <http://www.w3.org/2000/01/rdf-schema#label> "Public Affiliation Membership" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity
+<http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> <http://purl.org/dc/elements/1.1/description> "Describes the user activity online (e.g. on social media)." .
+<http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> <http://www.w3.org/2000/01/rdf-schema#label> "Social Network Activity" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount
+<http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/AccountType> .
+<http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount> <http://purl.org/dc/elements/1.1/description> "Account which is suspicious and has not been yet identified as fake or legitimate." .
+<http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount> <http://www.w3.org/2000/01/rdf-schema#label> "Suspicious Account" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/TweetsIteraction
+<http://www.semanticweb.org/OntoDisInfo/TweetsIteraction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/TweetsIteraction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity> .
+<http://www.semanticweb.org/OntoDisInfo/TweetsIteraction> <http://purl.org/dc/elements/1.1/description> "refers to the posting behaviour through a user account" .
+<http://www.semanticweb.org/OntoDisInfo/TweetsIteraction> <http://www.w3.org/2000/01/rdf-schema#label> "Tweets Interaction" .
+# 
+# http://www.semanticweb.org/OntoDisInfo/User
+<http://www.semanticweb.org/OntoDisInfo/User> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.semanticweb.org/OntoDisInfo/User> <http://purl.org/dc/elements/1.1/description> "A real person who has a social media account." .
+<http://www.semanticweb.org/OntoDisInfo/User> <http://www.w3.org/2000/01/rdf-schema#label> "User" .
+# 
+# http://www.w3.org/ns/dpv#Authenticating
+<http://www.w3.org/ns/dpv#Authenticating> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/dpv#Authenticating> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> .
+<http://www.w3.org/ns/dpv#Authenticating> <http://purl.org/dc/elements/1.1/description> "Data used to authenticate a user." .
+<http://www.w3.org/ns/dpv#Authenticating> <http://www.w3.org/2000/01/rdf-schema#label> "Authenticating" .
+# 
+# http://www.w3.org/ns/dpv#Contact
+<http://www.w3.org/ns/dpv#Contact> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/dpv#Contact> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> .
+<http://www.w3.org/ns/dpv#Contact> <http://purl.org/dc/elements/1.1/description> "Contact information about a user." .
+<http://www.w3.org/ns/dpv#Contact> <http://www.w3.org/2000/01/rdf-schema#label> "Contact" .
+# 
+# http://www.w3.org/ns/dpv#Identifying
+<http://www.w3.org/ns/dpv#Identifying> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/dpv#Identifying> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> .
+<http://www.w3.org/ns/dpv#Identifying> <http://purl.org/dc/elements/1.1/description> "Demographic data of the user." .
+<http://www.w3.org/ns/dpv#Identifying> <http://www.w3.org/2000/01/rdf-schema#label> "Indentifying" .
+# 
+# http://www.w3.org/ns/dpv#Professional
+<http://www.w3.org/ns/dpv#Professional> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/dpv#Professional> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> .
+<http://www.w3.org/ns/dpv#Professional> <http://purl.org/dc/elements/1.1/description> "description of user profession" .
+<http://www.w3.org/ns/dpv#Professional> <http://www.w3.org/2000/01/rdf-schema#label> "Professional" .
+# 
+# https://dpvcg.github.io/dpv-documentation/#Age
+<https://dpvcg.github.io/dpv-documentation/#Age> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://dpvcg.github.io/dpv-documentation/#Age> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/dpv#Identifying> .
+<https://dpvcg.github.io/dpv-documentation/#Age> <http://purl.org/dc/elements/1.1/description> "The age of a user." .
+<https://dpvcg.github.io/dpv-documentation/#Age> <http://www.w3.org/2000/01/rdf-schema#label> "Age" .
+# 
+# https://dpvcg.github.io/dpv-documentation/#EmailAddress
+<https://dpvcg.github.io/dpv-documentation/#EmailAddress> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://dpvcg.github.io/dpv-documentation/#EmailAddress> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/dpv#Contact> .
+<https://dpvcg.github.io/dpv-documentation/#EmailAddress> <http://purl.org/dc/elements/1.1/description> "Information about the user's email." .
+<https://dpvcg.github.io/dpv-documentation/#EmailAddress> <http://www.w3.org/2000/01/rdf-schema#label> "Email Address" .
+# 
+# https://dpvcg.github.io/dpv-documentation/#Job
+<https://dpvcg.github.io/dpv-documentation/#Job> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://dpvcg.github.io/dpv-documentation/#Job> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/dpv#Professional> .
+<https://dpvcg.github.io/dpv-documentation/#Job> <http://purl.org/dc/elements/1.1/description> "Information about professional jobs that the user holds." .
+<https://dpvcg.github.io/dpv-documentation/#Job> <http://www.w3.org/2000/01/rdf-schema#label> "Job" .
+# 
+# https://dpvcg.github.io/dpv-documentation/#Name
+<https://dpvcg.github.io/dpv-documentation/#Name> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://dpvcg.github.io/dpv-documentation/#Name> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/dpv#Identifying> .
+<https://dpvcg.github.io/dpv-documentation/#Name> <http://purl.org/dc/elements/1.1/description> "Information about names associated or used as given name or nickname." .
+<https://dpvcg.github.io/dpv-documentation/#Name> <http://www.w3.org/2000/01/rdf-schema#comment> "The full name of the user." .
+<https://dpvcg.github.io/dpv-documentation/#Name> <http://www.w3.org/2000/01/rdf-schema#label> "Name" .
+# 
+# https://dpvcg.github.io/dpv-documentation/#Password
+<https://dpvcg.github.io/dpv-documentation/#Password> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://dpvcg.github.io/dpv-documentation/#Password> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/dpv#Authenticating> .
+<https://dpvcg.github.io/dpv-documentation/#Password> <http://purl.org/dc/elements/1.1/description> "Information about password used in the process of authenticating the individual as a user accessing a system." .
+<https://dpvcg.github.io/dpv-documentation/#Password> <http://www.w3.org/2000/01/rdf-schema#label> "Password" .
+# 
+# https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory
+<https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics> .
+<https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> <http://purl.org/dc/elements/1.1/description> "A category of personal data" .
+<https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> <http://www.w3.org/2000/01/rdf-schema#label> "Personal Data Category" .
+# 
+# https://dpvcg.github.io/dpv-documentation/#TelephoneNumber
+<https://dpvcg.github.io/dpv-documentation/#TelephoneNumber> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://dpvcg.github.io/dpv-documentation/#TelephoneNumber> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/dpv#Contact> .
+<https://dpvcg.github.io/dpv-documentation/#TelephoneNumber> <http://purl.org/dc/elements/1.1/description> "The telephone number of a user." .
+<https://dpvcg.github.io/dpv-documentation/#TelephoneNumber> <http://www.w3.org/2000/01/rdf-schema#label> "Telephone Number" .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

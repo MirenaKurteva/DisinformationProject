@@ -1,0 +1,436 @@
+@prefix : <http://www.semanticweb.org/OntoDisInfo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/OntoDisInfo/> .
+
+<http://www.semanticweb.org/OntoDisInfo/> rdf:type owl:Ontology ;
+                                           owl:versionIRI <http://www.semanticweb.org/OntoDisInfo/2.0> ;
+                                           <http://purl.org/dc/elements/1.1/description> "The ontology systematically represents the most important profile-based features for Fake Account Detection." ;
+                                           <http://purl.org/dc/terms/author> "Mirena Kurteva" ;
+                                           <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/" ;
+                                           owl:versionInfo "Version 2" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/decription
+<http://purl.org/dc/elements/1.1/decription> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/author
+<http://purl.org/dc/terms/author> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/liscense
+<http://purl.org/dc/terms/liscense> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith
+:activityAssociatedWith rdf:type owl:ObjectProperty ;
+                        owl:inverseOf :hasActivity ;
+                        rdf:type owl:InverseFunctionalProperty ;
+                        rdfs:domain :SocialNetworkActivity ;
+                        rdfs:range :AccountType ;
+                        rdfs:comment "refers to any Twitter account performing some network activity" ;
+                        rdfs:label "activity_AssociatedWith" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/belongsTo
+:belongsTo rdf:type owl:ObjectProperty ;
+           owl:inverseOf :hasAccount ;
+           rdf:type owl:InverseFunctionalProperty ;
+           rdfs:domain :AccountType ;
+           rdfs:range :User ;
+           rdfs:comment "refers to the Twitter account beloging to some user" ;
+           rdfs:label "belongs_To" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/hasAccount
+:hasAccount rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :User ;
+            rdfs:range :AccountType ;
+            rdfs:comment "refers to a user having a Twitter account" ;
+            rdfs:label "has_Account" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/hasActivity
+:hasActivity rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :AccountType ;
+             rdfs:range :SocialNetworkActivity ;
+             rdfs:comment "refers to the activity of a Twitter account" ;
+             rdfs:label "has_Activity" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers
+:hasProfileIndentifiers rdf:type owl:ObjectProperty ;
+                        owl:inverseOf :metricsBelongTo ;
+                        rdf:type owl:FunctionalProperty ;
+                        rdfs:domain :AccountType ;
+                        rdfs:range :OnlineIdentificationMetrics ;
+                        rdfs:comment "refers to the fact that all Twitter account have profile information metrics" ;
+                        rdfs:label "has_ProfileIndentifiers" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/hasStatuses
+:hasStatuses rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :includesStatusesCreationDuring ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain :SocialNetworkActivity ;
+             rdfs:range :PostsInteraction ;
+             rdfs:comment "refers to the fact social activity includes interaction of users with posting or posts" ;
+             rdfs:label "has_Statuses" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/hasVerification
+:hasVerification rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :usedForVerificationBy ;
+                 rdf:type owl:FunctionalProperty ;
+                 rdfs:domain :AccountType ;
+                 rdfs:range <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> ;
+                 rdfs:comment "refers that a Twitter account has verification performed by specific personal data" ;
+                 rdfs:label "has_Verification" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring
+:includesStatusesCreationDuring rdf:type owl:ObjectProperty ,
+                                         owl:InverseFunctionalProperty ;
+                                rdfs:domain :PostsInteraction ;
+                                rdfs:range :SocialNetworkActivity ;
+                                rdfs:comment "refers to the process of post interaction of an Account" ;
+                                rdfs:label "includes_StatusesCreationDuring" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring
+:isSelectedAsFavouriteDuring rdf:type owl:ObjectProperty ;
+                             owl:inverseOf :selectedAsFavourite ;
+                             rdf:type owl:InverseFunctionalProperty ;
+                             rdfs:domain :FavouriteTweets ;
+                             rdfs:range :PostsInteraction ;
+                             rdfs:comment "refers to the process of marking tweets as favourite during some post interaction which may include creating or liking them" ;
+                             rdfs:label "isSelected_AsFavouriteDuring" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/metricsBelongTo
+:metricsBelongTo rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:InverseFunctionalProperty ;
+                 rdfs:domain :OnlineIdentificationMetrics ;
+                 rdfs:range :AccountType ;
+                 rdfs:comment "refers to the idenfitification metrics per twitter account" ;
+                 rdfs:label "metrics_BelongTo" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite
+:selectedAsFavourite rdf:type owl:ObjectProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain :PostsInteraction ;
+                     rdfs:range :FavouriteTweets ;
+                     rdfs:comment "refers to the process of post inteaction which including marking favourite tweets" ;
+                     rdfs:label "selectedAs_Favourite" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy
+:usedForVerificationBy rdf:type owl:ObjectProperty ,
+                                owl:InverseFunctionalProperty ;
+                       rdfs:domain <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> ;
+                       rdfs:range :AccountType ;
+                       rdfs:comment "refers to the process of using personla data by Twitter accounts for verification" ;
+                       rdfs:label "usedFor_VerificationBy" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/OntoDisInfo/accountName
+:accountName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :AccountType ;
+             rdfs:range xsd:string ;
+             <http://purl.org/dc/elements/1.1/description> "refers to a Twitter account name" ;
+             rdfs:comment "distincs account names that resemble the username of an account" ;
+             rdfs:label "accountName" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/favourites_count
+:favourites_count rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :FavouriteTweets ;
+                  rdfs:range xsd:integer ;
+                  <http://purl.org/dc/elements/1.1/description> "refers to marked posts or tweets as favourite" ;
+                  rdfs:label "favouritesCount" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/followers_count
+:followers_count rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Followers ;
+                 rdfs:range xsd:integer ;
+                 <http://purl.org/dc/elements/1.1/description> "refers to number of followers of a Twitter account" ;
+                 rdfs:label "followersCount" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/friends_count
+:friends_count rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Friends ;
+               rdfs:range xsd:integer ;
+               <http://purl.org/dc/elements/1.1/description> "refers to the number of friends of a Twitter account" ;
+               rdfs:label "friendsCount" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/is_fake
+:is_fake rdf:type owl:DatatypeProperty ;
+         rdfs:domain :AccountType ;
+         rdfs:range xsd:boolean ;
+         <http://purl.org/dc/elements/1.1/description> "refers to identified state of a Twitter account being Fake" ;
+         rdfs:label "isFake" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/is_legitimate
+:is_legitimate rdf:type owl:DatatypeProperty ;
+               rdfs:domain :AccountType ;
+               rdfs:range xsd:boolean ;
+               <http://purl.org/dc/elements/1.1/description> "refers to identified state of a Twitter account being Legitimate" ;
+               rdfs:label "isLegitimate" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/listedcount
+:listedcount rdf:type owl:DatatypeProperty ;
+             rdfs:domain :PublicAffiliationMembership ;
+             rdfs:range xsd:integer ;
+             <http://purl.org/dc/elements/1.1/description> "refers to the number of public lists the user account participates into" ;
+             rdfs:label "listedCount" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/openedAccounts_count
+:openedAccounts_count rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdfs:domain :User ;
+                      rdfs:range xsd:integer ;
+                      <http://purl.org/dc/elements/1.1/description> "refers to the number of different account a Twitter user has" ;
+                      rdfs:label "openedaccountsCount" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/statuses_count
+:statuses_count rdf:type owl:DatatypeProperty ;
+                rdfs:domain :AccountType ;
+                rdfs:range xsd:integer ;
+                <http://purl.org/dc/elements/1.1/description> "refers to the number of posts of a Twitter Account" ;
+                rdfs:label "statusesCount" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/userId
+:userId rdf:type owl:DatatypeProperty ;
+        rdfs:domain :User ;
+        rdfs:range xsd:string ;
+        <http://purl.org/dc/elements/1.1/description> "refers to user identifier" ;
+        rdfs:label "userId" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/verified
+:verified rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :AccountType ;
+          rdfs:range xsd:boolean ;
+          <http://purl.org/dc/elements/1.1/description> "refers to account authenticated by Twitter as belonging to the person," ;
+          rdfs:label "verified" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/OntoDisInfo/AccountType
+:AccountType rdf:type owl:Class ;
+             <http://purl.org/dc/elements/1.1/description> "The Account Type is categorised into Real, Fake and Suspicious Twitter Accounts." ;
+             rdfs:comment "This defines the status of a social media account." ;
+             rdfs:label "Account Type" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/FakeAccount
+:FakeAccount rdf:type owl:Class ;
+             rdfs:subClassOf :AccountType ;
+             <http://purl.org/dc/elements/1.1/description> "The account is reported Fake due to detected suspecious activity." ;
+             rdfs:label "Fake Account" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/FavouriteTweets
+:FavouriteTweets rdf:type owl:Class ;
+                 rdfs:subClassOf :PostsInteraction ;
+                 <http://purl.org/dc/elements/1.1/description> "This  refers to the number of times a piece of content—such as a tweet, post, or photo—has been liked or marked as a favorite by others." ;
+                 rdfs:label "Favourite Tweets" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/Followers
+:Followers rdf:type owl:Class ;
+           rdfs:subClassOf :FollowingActivity ;
+           <http://purl.org/dc/elements/1.1/description> "This is the number of Twitter followers who have chosen to follow another user account on the platform." ;
+           rdfs:label "Followers" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/FollowingActivity
+:FollowingActivity rdf:type owl:Class ;
+                   rdfs:subClassOf :SocialNetworkActivity ;
+                   <http://purl.org/dc/elements/1.1/description> "refers to different types of connections a user has" ;
+                   rdfs:label "Following Activity" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/Friends
+:Friends rdf:type owl:Class ;
+         rdfs:subClassOf :FollowingActivity ;
+         <http://purl.org/dc/elements/1.1/description> "This is the number of Friends per Twitter Account" ;
+         rdfs:label "Friends" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/LegitimateAccount
+:LegitimateAccount rdf:type owl:Class ;
+                   rdfs:subClassOf :AccountType ;
+                   <http://purl.org/dc/elements/1.1/description> "The account is detected as Real due to no suspicious activity pattern occurance." ;
+                   rdfs:label "Legitimate Account" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics
+:OnlineIdentificationMetrics rdf:type owl:Class ;
+                             <http://purl.org/dc/elements/1.1/description> "This class describes the personal information about the user" ;
+                             rdfs:label "Online Identification Metrics" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/PostsInteraction
+:PostsInteraction rdf:type owl:Class ;
+                  rdfs:subClassOf :TweetsIteraction ;
+                  <http://purl.org/dc/elements/1.1/description> "refers to engagement with tweet content" ;
+                  rdfs:label "Post Interaction" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership
+:PublicAffiliationMembership rdf:type owl:Class ;
+                             rdfs:subClassOf :SocialNetworkActivity ;
+                             <http://purl.org/dc/elements/1.1/description> "This refers to the number of times a Twitter user has been added to a list on a social media platform or has participated in groups" ;
+                             rdfs:label "Public Affiliation Membership" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity
+:SocialNetworkActivity rdf:type owl:Class ;
+                       <http://purl.org/dc/elements/1.1/description> "Describes the user activity online (e.g. on social media)." ;
+                       rdfs:label "Social Network Activity" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount
+:SuspiciousAccount rdf:type owl:Class ;
+                   rdfs:subClassOf :AccountType ;
+                   <http://purl.org/dc/elements/1.1/description> "Account which is suspicious and has not been yet identified as fake or legitimate." ;
+                   rdfs:label "Suspicious Account" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/TweetsIteraction
+:TweetsIteraction rdf:type owl:Class ;
+                  rdfs:subClassOf :SocialNetworkActivity ;
+                  <http://purl.org/dc/elements/1.1/description> "refers to the posting behaviour through a user account" ;
+                  rdfs:label "Tweets Interaction" .
+
+
+###  http://www.semanticweb.org/OntoDisInfo/User
+:User rdf:type owl:Class ;
+      <http://purl.org/dc/elements/1.1/description> "A real person who has a social media account." ;
+      rdfs:label "User" .
+
+
+###  http://www.w3.org/ns/dpv#Authenticating
+<http://www.w3.org/ns/dpv#Authenticating> rdf:type owl:Class ;
+                                          rdfs:subClassOf <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> ;
+                                          <http://purl.org/dc/elements/1.1/description> "Data used to authenticate a user." ;
+                                          rdfs:label "Authenticating" .
+
+
+###  http://www.w3.org/ns/dpv#Contact
+<http://www.w3.org/ns/dpv#Contact> rdf:type owl:Class ;
+                                   rdfs:subClassOf <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> ;
+                                   <http://purl.org/dc/elements/1.1/description> "Contact information about a user." ;
+                                   rdfs:label "Contact" .
+
+
+###  http://www.w3.org/ns/dpv#Identifying
+<http://www.w3.org/ns/dpv#Identifying> rdf:type owl:Class ;
+                                       rdfs:subClassOf <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> ;
+                                       <http://purl.org/dc/elements/1.1/description> "Demographic data of the user." ;
+                                       rdfs:label "Indentifying" .
+
+
+###  http://www.w3.org/ns/dpv#Professional
+<http://www.w3.org/ns/dpv#Professional> rdf:type owl:Class ;
+                                        rdfs:subClassOf <https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> ;
+                                        <http://purl.org/dc/elements/1.1/description> "description of user profession" ;
+                                        rdfs:label "Professional" .
+
+
+###  https://dpvcg.github.io/dpv-documentation/#Age
+<https://dpvcg.github.io/dpv-documentation/#Age> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://www.w3.org/ns/dpv#Identifying> ;
+                                                 <http://purl.org/dc/elements/1.1/description> "The age of a user." ;
+                                                 rdfs:label "Age" .
+
+
+###  https://dpvcg.github.io/dpv-documentation/#EmailAddress
+<https://dpvcg.github.io/dpv-documentation/#EmailAddress> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://www.w3.org/ns/dpv#Contact> ;
+                                                          <http://purl.org/dc/elements/1.1/description> "Information about the user's email." ;
+                                                          rdfs:label "Email Address" .
+
+
+###  https://dpvcg.github.io/dpv-documentation/#Job
+<https://dpvcg.github.io/dpv-documentation/#Job> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://www.w3.org/ns/dpv#Professional> ;
+                                                 <http://purl.org/dc/elements/1.1/description> "Information about professional jobs that the user holds." ;
+                                                 rdfs:label "Job" .
+
+
+###  https://dpvcg.github.io/dpv-documentation/#Name
+<https://dpvcg.github.io/dpv-documentation/#Name> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://www.w3.org/ns/dpv#Identifying> ;
+                                                  <http://purl.org/dc/elements/1.1/description> "Information about names associated or used as given name or nickname." ;
+                                                  rdfs:comment "The full name of the user." ;
+                                                  rdfs:label "Name" .
+
+
+###  https://dpvcg.github.io/dpv-documentation/#Password
+<https://dpvcg.github.io/dpv-documentation/#Password> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://www.w3.org/ns/dpv#Authenticating> ;
+                                                      <http://purl.org/dc/elements/1.1/description> "Information about password used in the process of authenticating the individual as a user accessing a system." ;
+                                                      rdfs:label "Password" .
+
+
+###  https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory
+<https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf :OnlineIdentificationMetrics ;
+                                                                  <http://purl.org/dc/elements/1.1/description> "A category of personal data" ;
+                                                                  rdfs:label "Personal Data Category" .
+
+
+###  https://dpvcg.github.io/dpv-documentation/#TelephoneNumber
+<https://dpvcg.github.io/dpv-documentation/#TelephoneNumber> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/ns/dpv#Contact> ;
+                                                             <http://purl.org/dc/elements/1.1/description> "The telephone number of a user." ;
+                                                             rdfs:label "Telephone Number" .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

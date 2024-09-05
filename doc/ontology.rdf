@@ -1,0 +1,680 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/disinfo/"
+     xml:base="http://www.semanticweb.org/ontologies/disinfo/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/disinfo/">
+        <owl:versionIRI rdf:resource="http://www.semanticweb.org/ontologies/disinfo/"/>
+        <dc:decription>This is an ontology for disinformation, which systematically represents the most important profile-based features for fake account detection.</dc:decription>
+        <terms:author>Mirena Kurteva</terms:author>
+        <terms:license>https://creativecommons.org/licenses/by/4.0/</terms:license>
+        <owl:versionInfo>Version 1.1</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/decription -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/decription"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/author -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/author"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/liscense -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/liscense"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#activityAssociatedWith -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#activityAssociatedWith">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasActivity"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SocialNetworkActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:comment>refers to any Twitter account performing some network activity</rdfs:comment>
+        <rdfs:label>activity_AssociatedWith</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#belongsTo -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#belongsTo">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasAccount"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#User"/>
+        <rdfs:comment>refers to the Twitter account beloging to some user</rdfs:comment>
+        <rdfs:label>belongs_To</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasAccount -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasAccount">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#User"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:comment>refers to a user having a Twitter account</rdfs:comment>
+        <rdfs:label>has_Account</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasActivity -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasActivity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SocialNetworkActivity"/>
+        <rdfs:comment>refers to the activity of a Twitter account</rdfs:comment>
+        <rdfs:label>has_Activity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasProfileIndentifiers -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasProfileIndentifiers">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#metricsBelongTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#OnlineIdentificationMetrics"/>
+        <rdfs:comment>refers to the fact that all Twitter account have profile information metrics</rdfs:comment>
+        <rdfs:label>has_ProfileIndentifiers</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasStatuses -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasStatuses">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#includesStatusesCreationDuring"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SocialNetworkActivity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PostsInteraction"/>
+        <rdfs:comment>refers to the fact social activity includes interaction of users with posting or posts</rdfs:comment>
+        <rdfs:label>has_Statuses</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasVerification -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#hasVerification">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#usedForVerificationBy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/dpv#PersonalDataCategory"/>
+        <rdfs:comment>refers that a Twitter account has verification performed by specific personal data</rdfs:comment>
+        <rdfs:label>has_Verification</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#includesStatusesCreationDuring -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#includesStatusesCreationDuring">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PostsInteraction"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SocialNetworkActivity"/>
+        <rdfs:comment>refers to the process of post interaction of an Account</rdfs:comment>
+        <rdfs:label>includes_StatusesCreationDuring</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#isSelectedAsFavouriteDuring -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#isSelectedAsFavouriteDuring">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#selectedAsFavourite"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FavouriteTweets"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PostsInteraction"/>
+        <rdfs:comment>refers to the process of marking tweets as favourite during some post interaction which may include creating or liking them</rdfs:comment>
+        <rdfs:label>isSelected_AsFavouriteDuring</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#metricsBelongTo -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#metricsBelongTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#OnlineIdentificationMetrics"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:comment>refers to the idenfitification metrics per twitter account</rdfs:comment>
+        <rdfs:label>metrics_BelongTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#selectedAsFavourite -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#selectedAsFavourite">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PostsInteraction"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FavouriteTweets"/>
+        <rdfs:comment>refers to the process of post inteaction which including marking favourite tweets</rdfs:comment>
+        <rdfs:label>selectedAs_Favourite</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#usedForVerificationBy -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#usedForVerificationBy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/dpv#PersonalDataCategory"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:comment>refers to the process of using personla data by Twitter accounts for verification</rdfs:comment>
+        <rdfs:label>usedFor_VerificationBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#accountName -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#accountName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:decription>refers to a Twitter account name</dc:decription>
+        <rdfs:comment>distincs account names that resemble the username of an account</rdfs:comment>
+        <rdfs:label>accountName</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#favourites_count -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#favourites_count">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FavouriteTweets"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <dc:decription>refers to marked posts or tweets as favourite</dc:decription>
+        <rdfs:label>favouritesCount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#followers_count -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#followers_count">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#Followers"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <dc:decription>refers to number of followers of a Twitter account</dc:decription>
+        <rdfs:label>followersCount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#friends_count -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#friends_count">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#Friends"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <dc:decription>refers to the number of friends of a Twitter account</dc:decription>
+        <rdfs:label>friendsCount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#is_fake -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#is_fake">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <dc:decription>refers to identified state of a Twitter account being Fake</dc:decription>
+        <rdfs:label>isFake</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#is_legitimate -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#is_legitimate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <dc:decription>refers to identified state of a Twitter account being Legitimate</dc:decription>
+        <rdfs:label>isLegitimate</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#listedcount -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#listedcount">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PublicAffiliationMembership"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <dc:decription>refers to the number of public lists the user account participates into</dc:decription>
+        <rdfs:label>listedCount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#openedAccounts_count -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#openedAccounts_count">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <dc:decription>refers to the number of different account a Twitter user has</dc:decription>
+        <rdfs:label>openedaccountsCount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#statuses_count -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#statuses_count">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <dc:decription>refers to the number of posts of a Twitter Account</dc:decription>
+        <rdfs:label>statusesCount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#userId -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#userId">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#User"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:decription>refers to user identifier</dc:decription>
+        <rdfs:label>userId</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#verified -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#verified">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <dc:decription>refers to account authenticated by Twitter as belonging to the person,</dc:decription>
+        <rdfs:label>verified</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType">
+        <dc:decription>The Account Type is categorised into Real, Fake and Suspicious Twitter Accounts.</dc:decription>
+        <rdfs:comment>This defines the status of a social media account.</rdfs:comment>
+        <rdfs:label>Account Type</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FakeAccount -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FakeAccount">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <dc:decription>The account is reported Fake due to detected suspecious activity.</dc:decription>
+        <rdfs:label>Fake Account</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FavouriteTweets -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FavouriteTweets">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PostsInteraction"/>
+        <dc:decription>This  refers to the number of times a piece of content—such as a tweet, post, or photo—has been liked or marked as a favorite by others.</dc:decription>
+        <rdfs:label>Favourite Tweets</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#Followers -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#Followers">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FollowingActivity"/>
+        <dc:decription>This is the number of Twitter followers who have chosen to follow another user account on the platform.</dc:decription>
+        <rdfs:label>Followers</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FollowingActivity -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FollowingActivity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SocialNetworkActivity"/>
+        <dc:decription>refers to different types of connections a user has</dc:decription>
+        <rdfs:label>Following Activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#Friends -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#Friends">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#FollowingActivity"/>
+        <dc:decription>This is the number of Friends per Twitter Account</dc:decription>
+        <rdfs:label>Friends</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#LegitimateAccount -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#LegitimateAccount">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <dc:decription>The account is detected as Real due to no suspicious activity pattern occurance.</dc:decription>
+        <rdfs:label>Legitimate Account</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#OnlineIdentificationMetrics -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#OnlineIdentificationMetrics">
+        <dc:decription>This class describes the personal information about the user</dc:decription>
+        <rdfs:label>Online Identification Metrics</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PostsInteraction -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PostsInteraction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#TweetsIteraction"/>
+        <dc:decription>refers to engagement with tweet content</dc:decription>
+        <rdfs:label>Post Interaction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PublicAffiliationMembership -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#PublicAffiliationMembership">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SocialNetworkActivity"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/ns/dpv#Job"/>
+        <dc:decription>This refers to the number of times a Twitter user has been added to a list on a social media platform or has participated in groups</dc:decription>
+        <rdfs:label>Public Affiliation Membership</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SocialNetworkActivity -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SocialNetworkActivity">
+        <dc:decription>Describes the user activity online (e.g. on social media).</dc:decription>
+        <rdfs:label>Social Network Activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SuspiciousAccount -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SuspiciousAccount">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#AccountType"/>
+        <dc:decription>Account which is suspicious and has not been yet identified as fake or legitimate.</dc:decription>
+        <rdfs:label>Suspicious Account</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#TweetsIteraction -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#TweetsIteraction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#SocialNetworkActivity"/>
+        <dc:decription>refers to the posting behaviour through a user account</dc:decription>
+        <rdfs:label>Tweets Interaction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#User -->
+
+
+    <owl:Class rdf:about="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#User">
+        <dc:decription>A real person who has a social media account.</dc:decription>
+        <rdfs:label>User</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#Age -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#Age">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#Identifying"/>
+        <dc:decription>The age of a user.</dc:decription>
+        <rdfs:label>Age</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#Authenticating -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#Authenticating">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#PersonalDataCategory"/>
+        <dc:decription>Data used to authenticate a user.</dc:decription>
+        <rdfs:label>Authenticating</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#Contact -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#Contact">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#PersonalDataCategory"/>
+        <dc:decription>Contact information about a user.</dc:decription>
+        <rdfs:label>Contact</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#EmailAddress -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#EmailAddress">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#Contact"/>
+        <dc:decription>Information about the user&apos;s email.</dc:decription>
+        <rdfs:label>Email Address</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#Identifying -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#Identifying">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#PersonalDataCategory"/>
+        <dc:decription>Demographic data of the user.</dc:decription>
+        <rdfs:label>Indentifying</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#Job -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#Job">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#Professional"/>
+        <dc:decription>Information about professional jobs that the user holds.</dc:decription>
+        <rdfs:label>Job</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#Name -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#Name">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#Identifying"/>
+        <dc:decription>Information about names associated or used as given name or nickname.</dc:decription>
+        <rdfs:comment>The full name of the user.</rdfs:comment>
+        <rdfs:label>Name</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#Password -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#Password">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#Authenticating"/>
+        <dc:decription>Information about password used in the process of authenticating the individual as a user accessing a system.</dc:decription>
+        <rdfs:label>Password</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#PersonalDataCategory -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#PersonalDataCategory">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/c2018451/ontologies/2024/6/miri#OnlineIdentificationMetrics"/>
+        <dc:decription>A category of personal data</dc:decription>
+        <rdfs:label>Personal Data Category</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#Professional -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#Professional">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#PersonalDataCategory"/>
+        <dc:decription>description of user profession</dc:decription>
+        <rdfs:label>Professional</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/dpv#TelephoneNumber -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/dpv#TelephoneNumber">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dpv#Contact"/>
+        <dc:decription>The telephone number of a user.</dc:decription>
+        <rdfs:label>Telephone Number</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+

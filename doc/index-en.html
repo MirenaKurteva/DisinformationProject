@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" href="resources/primer.css" media="screen" />    <link rel="stylesheet" href="resources/rec.css" media="screen" />    <link rel="stylesheet" href="resources/extra.css" media="screen" />    <link rel="stylesheet" href="resources/owl.css" media="screen" />    <title>Disinformation Ontology</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://www.semanticweb.org/OntoDisInfo/","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://www.semanticweb.org/OntoDisInfo/","name":"Disinformation Ontology", "headline":"Document describing the ontology http://www.semanticweb.org/OntoDisInfo/", "dateReleased":"Thu Sep 05 14:41:05 BST 2024", "version":"Version 2", "license":"https://creativecommons.org/licenses/by/4.0/", "author":[{"@type":"Person","name":"Mirena Kurteva, Cardiff University"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>Disinformation Ontology</h1>
+
+
+<dl>
+<dt>This version:</dt>
+<dd><a href="http://www.semanticweb.org/OntoDisInfo/2.0">http://www.semanticweb.org/OntoDisInfo/2.0</a></dd>
+<dt>Latest version:</dt>
+<dd><a href="http://www.semanticweb.org/OntoDisInfo/">http://www.semanticweb.org/OntoDisInfo/</a></dd>
+<dt>Revision:</dt>
+<dd>Version 2</dd>
+<dt>Authors:</dt>
+<dd>Mirena Kurteva, Cardiff University, The UK</dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img src="https://img.shields.io/badge/License-https://creativecommons.org/licenses/by/4.0/-blue.svg" alt="https://creativecommons.org/licenses/by/4.0/" /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> -->
+</dl>
+
+<hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div>     <div id="abstract"><h2>Abstract</h2><span class="markdown">
+The ontology systematically represents the most important profile-based features for Fake Account Detection.
+
+</span>
+</div>
+<div id="toc"></div> 
+
+<div id="namespacedeclarations">
+<h2 id="ns" class="list">Namespace declarations</h2>
+<div id="ns" align="center">
+<table>
+<caption> <a href="#ns"> Table 1</a>: Namespaces used in the document </caption>
+<tbody>
+<tr><td><b>OntoDisInfo</b></td><td>&lt;http://www.semanticweb.org/OntoDisInfo&gt;</td></tr>
+<tr><td><b>dc</b></td><td>&lt;http://purl.org/dc/elements/1.1/&gt;</td></tr>
+<tr><td><b>dpv</b></td><td>&lt;http://www.w3.org/ns/dpv#&gt;</td></tr>
+<tr><td><b>dpv-documentation</b></td><td>&lt;https://dpvcg.github.io/dpv-documentation/#&gt;</td></tr>
+<tr><td><b>ontodis</b></td><td>&lt;http://www.semanticweb.org/OntoDisinf/&gt;</td></tr>
+<tr><td><b>owl</b></td><td>&lt;http://www.w3.org/2002/07/owl#&gt;</td></tr>
+<tr><td><b>rdf</b></td><td>&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</td></tr>
+<tr><td><b>rdfs</b></td><td>&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</td></tr>
+<tr><td><b>terms</b></td><td>&lt;http://purl.org/dc/terms/&gt;</td></tr>
+<tr><td><b>xml</b></td><td>&lt;http://www.w3.org/XML/1998/namespace&gt;</td></tr>
+<tr><td><b>xsd</b></td><td>&lt;http://www.w3.org/2001/XMLSchema#&gt;</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">OntoDisInfo: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#AccountType"
+         title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+   </li>
+   <li>
+      <a href="#https://dpvcg.github.io/dpv-documentation/#Age" title="https://dpvcg.github.io/dpv-documentation/#Age">Age</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/dpv#Authenticating" title="http://www.w3.org/ns/dpv#Authenticating">Authenticating</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/dpv#Contact" title="http://www.w3.org/ns/dpv#Contact">Contact</a>
+   </li>
+   <li>
+      <a href="#https://dpvcg.github.io/dpv-documentation/#EmailAddress"
+         title="https://dpvcg.github.io/dpv-documentation/#EmailAddress">Email Address</a>
+   </li>
+   <li>
+      <a href="#FakeAccount"
+         title="http://www.semanticweb.org/OntoDisInfo/FakeAccount">Fake Account</a>
+   </li>
+   <li>
+      <a href="#FavouriteTweets"
+         title="http://www.semanticweb.org/OntoDisInfo/FavouriteTweets">Favourite Tweets</a>
+   </li>
+   <li>
+      <a href="#Followers" title="http://www.semanticweb.org/OntoDisInfo/Followers">Followers</a>
+   </li>
+   <li>
+      <a href="#FollowingActivity"
+         title="http://www.semanticweb.org/OntoDisInfo/FollowingActivity">Following Activity</a>
+   </li>
+   <li>
+      <a href="#Friends" title="http://www.semanticweb.org/OntoDisInfo/Friends">Friends</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/dpv#Identifying" title="http://www.w3.org/ns/dpv#Identifying">Indentifying</a>
+   </li>
+   <li>
+      <a href="#https://dpvcg.github.io/dpv-documentation/#Job" title="https://dpvcg.github.io/dpv-documentation/#Job">Job</a>
+   </li>
+   <li>
+      <a href="#LegitimateAccount"
+         title="http://www.semanticweb.org/OntoDisInfo/LegitimateAccount">Legitimate Account</a>
+   </li>
+   <li>
+      <a href="#https://dpvcg.github.io/dpv-documentation/#Name" title="https://dpvcg.github.io/dpv-documentation/#Name">Name</a>
+   </li>
+   <li>
+      <a href="#OnlineIdentificationMetrics"
+         title="http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics">Online Identification Metrics</a>
+   </li>
+   <li>
+      <a href="#https://dpvcg.github.io/dpv-documentation/#Password"
+         title="https://dpvcg.github.io/dpv-documentation/#Password">Password</a>
+   </li>
+   <li>
+      <a href="#https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory"
+         title="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">Personal Data Category</a>
+   </li>
+   <li>
+      <a href="#PostsInteraction"
+         title="http://www.semanticweb.org/OntoDisInfo/PostsInteraction">Post Interaction</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/dpv#Professional" title="http://www.w3.org/ns/dpv#Professional">Professional</a>
+   </li>
+   <li>
+      <a href="#PublicAffiliationMembership"
+         title="http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership">Public Affiliation Membership</a>
+   </li>
+   <li>
+      <a href="#SocialNetworkActivity"
+         title="http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity">Social Network Activity</a>
+   </li>
+   <li>
+      <a href="#SuspiciousAccount"
+         title="http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount">Suspicious Account</a>
+   </li>
+   <li>
+      <a href="#https://dpvcg.github.io/dpv-documentation/#TelephoneNumber"
+         title="https://dpvcg.github.io/dpv-documentation/#TelephoneNumber">Telephone Number</a>
+   </li>
+   <li>
+      <a href="#TweetsIteraction"
+         title="http://www.semanticweb.org/OntoDisInfo/TweetsIteraction">Tweets Interaction</a>
+   </li>
+   <li>
+      <a href="#User" title="http://www.semanticweb.org/OntoDisInfo/User">User</a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#activityAssociatedWith"
+         title="http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith">activity_AssociatedWith</a>
+   </li>
+   <li>
+      <a href="#belongsTo" title="http://www.semanticweb.org/OntoDisInfo/belongsTo">belongs_To</a>
+   </li>
+   <li>
+      <a href="#hasAccount" title="http://www.semanticweb.org/OntoDisInfo/hasAccount">has_Account</a>
+   </li>
+   <li>
+      <a href="#hasActivity"
+         title="http://www.semanticweb.org/OntoDisInfo/hasActivity">has_Activity</a>
+   </li>
+   <li>
+      <a href="#hasProfileIndentifiers"
+         title="http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers">has_ProfileIndentifiers</a>
+   </li>
+   <li>
+      <a href="#hasStatuses"
+         title="http://www.semanticweb.org/OntoDisInfo/hasStatuses">has_Statuses</a>
+   </li>
+   <li>
+      <a href="#hasVerification"
+         title="http://www.semanticweb.org/OntoDisInfo/hasVerification">has_Verification</a>
+   </li>
+   <li>
+      <a href="#includesStatusesCreationDuring"
+         title="http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring">includes_StatusesCreationDuring</a>
+   </li>
+   <li>
+      <a href="#isSelectedAsFavouriteDuring"
+         title="http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring">isSelected_AsFavouriteDuring</a>
+   </li>
+   <li>
+      <a href="#metricsBelongTo"
+         title="http://www.semanticweb.org/OntoDisInfo/metricsBelongTo">metrics_BelongTo</a>
+   </li>
+   <li>
+      <a href="#selectedAsFavourite"
+         title="http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite">selectedAs_Favourite</a>
+   </li>
+   <li>
+      <a href="#usedForVerificationBy"
+         title="http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy">usedFor_VerificationBy</a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#accountName"
+         title="http://www.semanticweb.org/OntoDisInfo/accountName">accountName</a>
+   </li>
+   <li>
+      <a href="#favourites_count"
+         title="http://www.semanticweb.org/OntoDisInfo/favourites_count">favouritesCount</a>
+   </li>
+   <li>
+      <a href="#followers_count"
+         title="http://www.semanticweb.org/OntoDisInfo/followers_count">followersCount</a>
+   </li>
+   <li>
+      <a href="#friends_count"
+         title="http://www.semanticweb.org/OntoDisInfo/friends_count">friendsCount</a>
+   </li>
+   <li>
+      <a href="#is_fake" title="http://www.semanticweb.org/OntoDisInfo/is_fake">isFake</a>
+   </li>
+   <li>
+      <a href="#is_legitimate"
+         title="http://www.semanticweb.org/OntoDisInfo/is_legitimate">isLegitimate</a>
+   </li>
+   <li>
+      <a href="#listedcount"
+         title="http://www.semanticweb.org/OntoDisInfo/listedcount">listedCount</a>
+   </li>
+   <li>
+      <a href="#openedAccounts_count"
+         title="http://www.semanticweb.org/OntoDisInfo/openedAccounts_count">openedaccountsCount</a>
+   </li>
+   <li>
+      <a href="#statuses_count"
+         title="http://www.semanticweb.org/OntoDisInfo/statuses_count">statusesCount</a>
+   </li>
+   <li>
+      <a href="#userId" title="http://www.semanticweb.org/OntoDisInfo/userId">userId</a>
+   </li>
+   <li>
+      <a href="#verified" title="http://www.semanticweb.org/OntoDisInfo/verified">verified</a>
+   </li>
+</ul><iframe align="center" width="100%" height ="500px" src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">OntoDisInf: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">The ontology systematically represents the most important profile-based features for Fake Account Detection.</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for OntoDisInfo classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by OntoDisInf.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     id="classes">
+   <h3 id="classes-headline" class="list">Classes</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#AccountType"
+            title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+      </li>
+      <li>
+         <a href="#https://dpvcg.github.io/dpv-documentation/#Age" title="https://dpvcg.github.io/dpv-documentation/#Age">Age</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/ns/dpv#Authenticating" title="http://www.w3.org/ns/dpv#Authenticating">Authenticating</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/ns/dpv#Contact" title="http://www.w3.org/ns/dpv#Contact">Contact</a>
+      </li>
+      <li>
+         <a href="#https://dpvcg.github.io/dpv-documentation/#EmailAddress"
+            title="https://dpvcg.github.io/dpv-documentation/#EmailAddress">Email Address</a>
+      </li>
+      <li>
+         <a href="#FakeAccount"
+            title="http://www.semanticweb.org/OntoDisInfo/FakeAccount">Fake Account</a>
+      </li>
+      <li>
+         <a href="#FavouriteTweets"
+            title="http://www.semanticweb.org/OntoDisInfo/FavouriteTweets">Favourite Tweets</a>
+      </li>
+      <li>
+         <a href="#Followers" title="http://www.semanticweb.org/OntoDisInfo/Followers">Followers</a>
+      </li>
+      <li>
+         <a href="#FollowingActivity"
+            title="http://www.semanticweb.org/OntoDisInfo/FollowingActivity">Following Activity</a>
+      </li>
+      <li>
+         <a href="#Friends" title="http://www.semanticweb.org/OntoDisInfo/Friends">Friends</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/ns/dpv#Identifying" title="http://www.w3.org/ns/dpv#Identifying">Indentifying</a>
+      </li>
+      <li>
+         <a href="#https://dpvcg.github.io/dpv-documentation/#Job" title="https://dpvcg.github.io/dpv-documentation/#Job">Job</a>
+      </li>
+      <li>
+         <a href="#LegitimateAccount"
+            title="http://www.semanticweb.org/OntoDisInfo/LegitimateAccount">Legitimate Account</a>
+      </li>
+      <li>
+         <a href="#https://dpvcg.github.io/dpv-documentation/#Name" title="https://dpvcg.github.io/dpv-documentation/#Name">Name</a>
+      </li>
+      <li>
+         <a href="#OnlineIdentificationMetrics"
+            title="http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics">Online Identification Metrics</a>
+      </li>
+      <li>
+         <a href="#https://dpvcg.github.io/dpv-documentation/#Password"
+            title="https://dpvcg.github.io/dpv-documentation/#Password">Password</a>
+      </li>
+      <li>
+         <a href="#https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory"
+            title="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">Personal Data Category</a>
+      </li>
+      <li>
+         <a href="#PostsInteraction"
+            title="http://www.semanticweb.org/OntoDisInfo/PostsInteraction">Post Interaction</a>
+      </li>
+      <li>
+         <a href="#http://www.w3.org/ns/dpv#Professional" title="http://www.w3.org/ns/dpv#Professional">Professional</a>
+      </li>
+      <li>
+         <a href="#PublicAffiliationMembership"
+            title="http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership">Public Affiliation Membership</a>
+      </li>
+      <li>
+         <a href="#SocialNetworkActivity"
+            title="http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity">Social Network Activity</a>
+      </li>
+      <li>
+         <a href="#SuspiciousAccount"
+            title="http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount">Suspicious Account</a>
+      </li>
+      <li>
+         <a href="#https://dpvcg.github.io/dpv-documentation/#TelephoneNumber"
+            title="https://dpvcg.github.io/dpv-documentation/#TelephoneNumber">Telephone Number</a>
+      </li>
+      <li>
+         <a href="#TweetsIteraction"
+            title="http://www.semanticweb.org/OntoDisInfo/TweetsIteraction">Tweets Interaction</a>
+      </li>
+      <li>
+         <a href="#User" title="http://www.semanticweb.org/OntoDisInfo/User">User</a>
+      </li>
+   </ul>
+   <div class="entity" id="AccountType">
+      <h3>Account Type<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/AccountType</p>
+      <div class="comment">
+         <span class="markdown">This defines the status of a social media account.</span>
+      </div>
+      <div class="info">
+         <span class="markdown">The Account Type is categorised into Real, Fake and Suspicious Twitter Accounts.</span>
+      </div>
+      <dl class="description">
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#FakeAccount"
+               title="http://www.semanticweb.org/OntoDisInfo/FakeAccount">Fake Account</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#LegitimateAccount"
+               title="http://www.semanticweb.org/OntoDisInfo/LegitimateAccount">Legitimate Account</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SuspiciousAccount"
+               title="http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount">Suspicious Account</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#accountName"
+               title="http://www.semanticweb.org/OntoDisInfo/accountName">accountName</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#belongsTo" title="http://www.semanticweb.org/OntoDisInfo/belongsTo">belongs_To</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasActivity"
+               title="http://www.semanticweb.org/OntoDisInfo/hasActivity">has_Activity</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasProfileIndentifiers"
+               title="http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers">has_ProfileIndentifiers</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasVerification"
+               title="http://www.semanticweb.org/OntoDisInfo/hasVerification">has_Verification</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#is_fake" title="http://www.semanticweb.org/OntoDisInfo/is_fake">isFake</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#is_legitimate"
+               title="http://www.semanticweb.org/OntoDisInfo/is_legitimate">isLegitimate</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#statuses_count"
+               title="http://www.semanticweb.org/OntoDisInfo/statuses_count">statusesCount</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#verified" title="http://www.semanticweb.org/OntoDisInfo/verified">verified</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#activityAssociatedWith"
+               title="http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith">activity_AssociatedWith</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasAccount" title="http://www.semanticweb.org/OntoDisInfo/hasAccount">has_Account</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#metricsBelongTo"
+               title="http://www.semanticweb.org/OntoDisInfo/metricsBelongTo">metrics_BelongTo</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#usedForVerificationBy"
+               title="http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy">usedFor_VerificationBy</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="https://dpvcg.github.io/dpv-documentation/#Age">
+      <h3>Age<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://dpvcg.github.io/dpv-documentation/#Age</p>
+      <div class="info">
+         <span class="markdown">The age of a user.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.w3.org/ns/dpv#Identifying" title="http://www.w3.org/ns/dpv#Identifying">Indentifying</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.w3.org/ns/dpv#Authenticating">
+      <h3>Authenticating<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/ns/dpv#Authenticating</p>
+      <div class="info">
+         <span class="markdown">Data used to authenticate a user.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory"
+               title="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">Personal Data Category</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#https://dpvcg.github.io/dpv-documentation/#Password"
+               title="https://dpvcg.github.io/dpv-documentation/#Password">Password</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.w3.org/ns/dpv#Contact">
+      <h3>Contact<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/ns/dpv#Contact</p>
+      <div class="info">
+         <span class="markdown">Contact information about a user.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory"
+               title="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">Personal Data Category</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#https://dpvcg.github.io/dpv-documentation/#EmailAddress"
+               title="https://dpvcg.github.io/dpv-documentation/#EmailAddress">Email Address</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#https://dpvcg.github.io/dpv-documentation/#TelephoneNumber"
+               title="https://dpvcg.github.io/dpv-documentation/#TelephoneNumber">Telephone Number</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="https://dpvcg.github.io/dpv-documentation/#EmailAddress">
+      <h3>Email Address<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://dpvcg.github.io/dpv-documentation/#EmailAddress</p>
+      <div class="info">
+         <span class="markdown">Information about the user's email.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.w3.org/ns/dpv#Contact" title="http://www.w3.org/ns/dpv#Contact">Contact</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="FakeAccount">
+      <h3>Fake Account<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/FakeAccount</p>
+      <div class="info">
+         <span class="markdown">The account is reported Fake due to detected suspecious activity.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#AccountType"
+               title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="FavouriteTweets">
+      <h3>Favourite Tweets<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/FavouriteTweets</p>
+      <div class="info">
+         <span class="markdown">This  refers to the number of times a piece of content—such as a tweet, post, or photo—has been liked or marked as a favorite by others.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#PostsInteraction"
+               title="http://www.semanticweb.org/OntoDisInfo/PostsInteraction">Post Interaction</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#favourites_count"
+               title="http://www.semanticweb.org/OntoDisInfo/favourites_count">favouritesCount</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#isSelectedAsFavouriteDuring"
+               title="http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring">isSelected_AsFavouriteDuring</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#selectedAsFavourite"
+               title="http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite">selectedAs_Favourite</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Followers">
+      <h3>Followers<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/Followers</p>
+      <div class="info">
+         <span class="markdown">This is the number of Twitter followers who have chosen to follow another user account on the platform.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#FollowingActivity"
+               title="http://www.semanticweb.org/OntoDisInfo/FollowingActivity">Following Activity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#followers_count"
+               title="http://www.semanticweb.org/OntoDisInfo/followers_count">followersCount</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="FollowingActivity">
+      <h3>Following Activity<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/FollowingActivity</p>
+      <div class="info">
+         <span class="markdown">refers to different types of connections a user has</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#SocialNetworkActivity"
+               title="http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity">Social Network Activity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#Followers" title="http://www.semanticweb.org/OntoDisInfo/Followers">Followers</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Friends" title="http://www.semanticweb.org/OntoDisInfo/Friends">Friends</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Friends">
+      <h3>Friends<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/Friends</p>
+      <div class="info">
+         <span class="markdown">This is the number of Friends per Twitter Account</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#FollowingActivity"
+               title="http://www.semanticweb.org/OntoDisInfo/FollowingActivity">Following Activity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#friends_count"
+               title="http://www.semanticweb.org/OntoDisInfo/friends_count">friendsCount</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.w3.org/ns/dpv#Identifying">
+      <h3>Indentifying<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/ns/dpv#Identifying</p>
+      <div class="info">
+         <span class="markdown">Demographic data of the user.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory"
+               title="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">Personal Data Category</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#https://dpvcg.github.io/dpv-documentation/#Age" title="https://dpvcg.github.io/dpv-documentation/#Age">Age</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#https://dpvcg.github.io/dpv-documentation/#Name" title="https://dpvcg.github.io/dpv-documentation/#Name">Name</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="https://dpvcg.github.io/dpv-documentation/#Job">
+      <h3>Job<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://dpvcg.github.io/dpv-documentation/#Job</p>
+      <div class="info">
+         <span class="markdown">Information about professional jobs that the user holds.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.w3.org/ns/dpv#Professional" title="http://www.w3.org/ns/dpv#Professional">Professional</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="LegitimateAccount">
+      <h3>Legitimate Account<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/LegitimateAccount</p>
+      <div class="info">
+         <span class="markdown">The account is detected as Real due to no suspicious activity pattern occurance.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#AccountType"
+               title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="https://dpvcg.github.io/dpv-documentation/#Name">
+      <h3>Name<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://dpvcg.github.io/dpv-documentation/#Name</p>
+      <div class="comment">
+         <span class="markdown">The full name of the user.</span>
+      </div>
+      <div class="info">
+         <span class="markdown">Information about names associated or used as given name or nickname.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.w3.org/ns/dpv#Identifying" title="http://www.w3.org/ns/dpv#Identifying">Indentifying</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="OnlineIdentificationMetrics">
+      <h3>Online Identification Metrics<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics</p>
+      <div class="info">
+         <span class="markdown">This class describes the personal information about the user</span>
+      </div>
+      <dl class="description">
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory"
+               title="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">Personal Data Category</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#metricsBelongTo"
+               title="http://www.semanticweb.org/OntoDisInfo/metricsBelongTo">metrics_BelongTo</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasProfileIndentifiers"
+               title="http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers">has_ProfileIndentifiers</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="https://dpvcg.github.io/dpv-documentation/#Password">
+      <h3>Password<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://dpvcg.github.io/dpv-documentation/#Password</p>
+      <div class="info">
+         <span class="markdown">Information about password used in the process of authenticating the individual as a user accessing a system.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.w3.org/ns/dpv#Authenticating" title="http://www.w3.org/ns/dpv#Authenticating">Authenticating</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">
+      <h3>Personal Data Category<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory</p>
+      <div class="info">
+         <span class="markdown">A category of personal data</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#OnlineIdentificationMetrics"
+               title="http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics">Online Identification Metrics</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#http://www.w3.org/ns/dpv#Authenticating" title="http://www.w3.org/ns/dpv#Authenticating">Authenticating</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#http://www.w3.org/ns/dpv#Contact" title="http://www.w3.org/ns/dpv#Contact">Contact</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#http://www.w3.org/ns/dpv#Identifying" title="http://www.w3.org/ns/dpv#Identifying">Indentifying</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#http://www.w3.org/ns/dpv#Professional" title="http://www.w3.org/ns/dpv#Professional">Professional</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#usedForVerificationBy"
+               title="http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy">usedFor_VerificationBy</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasVerification"
+               title="http://www.semanticweb.org/OntoDisInfo/hasVerification">has_Verification</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="PostsInteraction">
+      <h3>Post Interaction<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/PostsInteraction</p>
+      <div class="info">
+         <span class="markdown">refers to engagement with tweet content</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#TweetsIteraction"
+               title="http://www.semanticweb.org/OntoDisInfo/TweetsIteraction">Tweets Interaction</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#FavouriteTweets"
+               title="http://www.semanticweb.org/OntoDisInfo/FavouriteTweets">Favourite Tweets</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#includesStatusesCreationDuring"
+               title="http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring">includes_StatusesCreationDuring</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#selectedAsFavourite"
+               title="http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite">selectedAs_Favourite</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasStatuses"
+               title="http://www.semanticweb.org/OntoDisInfo/hasStatuses">has_Statuses</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#isSelectedAsFavouriteDuring"
+               title="http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring">isSelected_AsFavouriteDuring</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.w3.org/ns/dpv#Professional">
+      <h3>Professional<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.w3.org/ns/dpv#Professional</p>
+      <div class="info">
+         <span class="markdown">description of user profession</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory"
+               title="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">Personal Data Category</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#https://dpvcg.github.io/dpv-documentation/#Job" title="https://dpvcg.github.io/dpv-documentation/#Job">Job</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="PublicAffiliationMembership">
+      <h3>Public Affiliation Membership<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership</p>
+      <div class="info">
+         <span class="markdown">This refers to the number of times a Twitter user has been added to a list on a social media platform or has participated in groups</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#SocialNetworkActivity"
+               title="http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity">Social Network Activity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#listedcount"
+               title="http://www.semanticweb.org/OntoDisInfo/listedcount">listedCount</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="SocialNetworkActivity">
+      <h3>Social Network Activity<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity</p>
+      <div class="info">
+         <span class="markdown">Describes the user activity online (e.g. on social media).</span>
+      </div>
+      <dl class="description">
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#FollowingActivity"
+               title="http://www.semanticweb.org/OntoDisInfo/FollowingActivity">Following Activity</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PublicAffiliationMembership"
+               title="http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership">Public Affiliation Membership</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#TweetsIteraction"
+               title="http://www.semanticweb.org/OntoDisInfo/TweetsIteraction">Tweets Interaction</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#activityAssociatedWith"
+               title="http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith">activity_AssociatedWith</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#hasStatuses"
+               title="http://www.semanticweb.org/OntoDisInfo/hasStatuses">has_Statuses</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#hasActivity"
+               title="http://www.semanticweb.org/OntoDisInfo/hasActivity">has_Activity</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#includesStatusesCreationDuring"
+               title="http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring">includes_StatusesCreationDuring</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="SuspiciousAccount">
+      <h3>Suspicious Account<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/SuspiciousAccount</p>
+      <div class="info">
+         <span class="markdown">Account which is suspicious and has not been yet identified as fake or legitimate.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#AccountType"
+               title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="https://dpvcg.github.io/dpv-documentation/#TelephoneNumber">
+      <h3>Telephone Number<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://dpvcg.github.io/dpv-documentation/#TelephoneNumber</p>
+      <div class="info">
+         <span class="markdown">The telephone number of a user.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.w3.org/ns/dpv#Contact" title="http://www.w3.org/ns/dpv#Contact">Contact</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="TweetsIteraction">
+      <h3>Tweets Interaction<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/TweetsIteraction</p>
+      <div class="info">
+         <span class="markdown">refers to the posting behaviour through a user account</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#SocialNetworkActivity"
+               title="http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity">Social Network Activity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#PostsInteraction"
+               title="http://www.semanticweb.org/OntoDisInfo/PostsInteraction">Post Interaction</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="User">
+      <h3>User<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/User</p>
+      <div class="info">
+         <span class="markdown">A real person who has a social media account.</span>
+      </div>
+      <dl class="description">
+         <dt>is in domain of</dt>
+         <dd>
+            <a href="#hasAccount" title="http://www.semanticweb.org/OntoDisInfo/hasAccount">has_Account</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#openedAccounts_count"
+               title="http://www.semanticweb.org/OntoDisInfo/openedAccounts_count">openedaccountsCount</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#userId" title="http://www.semanticweb.org/OntoDisInfo/userId">userId</a>
+            <sup class="type-dp" title="data property">dp</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#belongsTo" title="http://www.semanticweb.org/OntoDisInfo/belongsTo">belongs_To</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     id="objectproperties">
+   <h3 id="properties" class="list">Object Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#activityAssociatedWith"
+            title="http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith">activity_AssociatedWith</a>
+      </li>
+      <li>
+         <a href="#belongsTo" title="http://www.semanticweb.org/OntoDisInfo/belongsTo">belongs_To</a>
+      </li>
+      <li>
+         <a href="#hasAccount" title="http://www.semanticweb.org/OntoDisInfo/hasAccount">has_Account</a>
+      </li>
+      <li>
+         <a href="#hasActivity"
+            title="http://www.semanticweb.org/OntoDisInfo/hasActivity">has_Activity</a>
+      </li>
+      <li>
+         <a href="#hasProfileIndentifiers"
+            title="http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers">has_ProfileIndentifiers</a>
+      </li>
+      <li>
+         <a href="#hasStatuses"
+            title="http://www.semanticweb.org/OntoDisInfo/hasStatuses">has_Statuses</a>
+      </li>
+      <li>
+         <a href="#hasVerification"
+            title="http://www.semanticweb.org/OntoDisInfo/hasVerification">has_Verification</a>
+      </li>
+      <li>
+         <a href="#includesStatusesCreationDuring"
+            title="http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring">includes_StatusesCreationDuring</a>
+      </li>
+      <li>
+         <a href="#isSelectedAsFavouriteDuring"
+            title="http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring">isSelected_AsFavouriteDuring</a>
+      </li>
+      <li>
+         <a href="#metricsBelongTo"
+            title="http://www.semanticweb.org/OntoDisInfo/metricsBelongTo">metrics_BelongTo</a>
+      </li>
+      <li>
+         <a href="#selectedAsFavourite"
+            title="http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite">selectedAs_Favourite</a>
+      </li>
+      <li>
+         <a href="#usedForVerificationBy"
+            title="http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy">usedFor_VerificationBy</a>
+      </li>
+   </ul>
+   <div class="entity" id="activityAssociatedWith">
+      <h3>activity_AssociatedWith<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith</p>
+      <div class="comment">
+         <span class="markdown">refers to any Twitter account performing some network activity</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> inverse functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#SocialNetworkActivity"
+                  title="http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity">Social Network Activity</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#hasActivity"
+                  title="http://www.semanticweb.org/OntoDisInfo/hasActivity">has_Activity</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="belongsTo">
+      <h3>belongs_To<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/belongsTo</p>
+      <div class="comment">
+         <span class="markdown">refers to the Twitter account beloging to some user</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> inverse functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#User" title="http://www.semanticweb.org/OntoDisInfo/User">User</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#hasAccount" title="http://www.semanticweb.org/OntoDisInfo/hasAccount">has_Account</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasAccount">
+      <h3>has_Account<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/hasAccount</p>
+      <div class="comment">
+         <span class="markdown">refers to a user having a Twitter account</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#User" title="http://www.semanticweb.org/OntoDisInfo/User">User</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#belongsTo" title="http://www.semanticweb.org/OntoDisInfo/belongsTo">belongs_To</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasActivity">
+      <h3>has_Activity<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/hasActivity</p>
+      <div class="comment">
+         <span class="markdown">refers to the activity of a Twitter account</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#SocialNetworkActivity"
+                  title="http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity">Social Network Activity</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#activityAssociatedWith"
+                  title="http://www.semanticweb.org/OntoDisInfo/activityAssociatedWith">activity_AssociatedWith</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasProfileIndentifiers">
+      <h3>has_ProfileIndentifiers<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers</p>
+      <div class="comment">
+         <span class="markdown">refers to the fact that all Twitter account have profile information metrics</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#OnlineIdentificationMetrics"
+                  title="http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics">Online Identification Metrics</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#metricsBelongTo"
+                  title="http://www.semanticweb.org/OntoDisInfo/metricsBelongTo">metrics_BelongTo</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasStatuses">
+      <h3>has_Statuses<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/hasStatuses</p>
+      <div class="comment">
+         <span class="markdown">refers to the fact social activity includes interaction of users with posting or posts</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> functional</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#SocialNetworkActivity"
+                  title="http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity">Social Network Activity</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#PostsInteraction"
+                  title="http://www.semanticweb.org/OntoDisInfo/PostsInteraction">Post Interaction</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#includesStatusesCreationDuring"
+                  title="http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring">includes_StatusesCreationDuring</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="hasVerification">
+      <h3>has_Verification<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/hasVerification</p>
+      <div class="comment">
+         <span class="markdown">refers that a Twitter account has verification performed by specific personal data</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory"
+                  title="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">Personal Data Category</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#usedForVerificationBy"
+                  title="http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy">usedFor_VerificationBy</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="includesStatusesCreationDuring">
+      <h3>includes_StatusesCreationDuring<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/includesStatusesCreationDuring</p>
+      <div class="comment">
+         <span class="markdown">refers to the process of post interaction of an Account</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> inverse functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PostsInteraction"
+                  title="http://www.semanticweb.org/OntoDisInfo/PostsInteraction">Post Interaction</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#SocialNetworkActivity"
+                  title="http://www.semanticweb.org/OntoDisInfo/SocialNetworkActivity">Social Network Activity</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#hasStatuses"
+                  title="http://www.semanticweb.org/OntoDisInfo/hasStatuses">has_Statuses</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="isSelectedAsFavouriteDuring">
+      <h3>isSelected_AsFavouriteDuring<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring</p>
+      <div class="comment">
+         <span class="markdown">refers to the process of marking tweets as favourite during some post interaction which may include creating or liking them</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> inverse functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#FavouriteTweets"
+                  title="http://www.semanticweb.org/OntoDisInfo/FavouriteTweets">Favourite Tweets</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#PostsInteraction"
+                  title="http://www.semanticweb.org/OntoDisInfo/PostsInteraction">Post Interaction</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#selectedAsFavourite"
+                  title="http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite">selectedAs_Favourite</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="metricsBelongTo">
+      <h3>metrics_BelongTo<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/metricsBelongTo</p>
+      <div class="comment">
+         <span class="markdown">refers to the idenfitification metrics per twitter account</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> inverse functional</p>
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#OnlineIdentificationMetrics"
+                  title="http://www.semanticweb.org/OntoDisInfo/OnlineIdentificationMetrics">Online Identification Metrics</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#hasProfileIndentifiers"
+                  title="http://www.semanticweb.org/OntoDisInfo/hasProfileIndentifiers">has_ProfileIndentifiers</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="selectedAsFavourite">
+      <h3>selectedAs_Favourite<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/selectedAsFavourite</p>
+      <div class="comment">
+         <span class="markdown">refers to the process of post inteaction which including marking favourite tweets</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PostsInteraction"
+                  title="http://www.semanticweb.org/OntoDisInfo/PostsInteraction">Post Interaction</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#FavouriteTweets"
+                  title="http://www.semanticweb.org/OntoDisInfo/FavouriteTweets">Favourite Tweets</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#isSelectedAsFavouriteDuring"
+                  title="http://www.semanticweb.org/OntoDisInfo/isSelectedAsFavouriteDuring">isSelected_AsFavouriteDuring</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="usedForVerificationBy">
+      <h3>usedFor_VerificationBy<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/usedForVerificationBy</p>
+      <div class="comment">
+         <span class="markdown">refers to the process of using personla data by Twitter accounts for verification</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> inverse functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory"
+                  title="https://dpvcg.github.io/dpv-documentation/#PersonalDataCategory">Personal Data Category</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>is inverse of</dt>
+            <dd>
+               <a href="#hasVerification"
+                  title="http://www.semanticweb.org/OntoDisInfo/hasVerification">has_Verification</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     id="dataproperties">
+   <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#accountName"
+            title="http://www.semanticweb.org/OntoDisInfo/accountName">accountName</a>
+      </li>
+      <li>
+         <a href="#favourites_count"
+            title="http://www.semanticweb.org/OntoDisInfo/favourites_count">favouritesCount</a>
+      </li>
+      <li>
+         <a href="#followers_count"
+            title="http://www.semanticweb.org/OntoDisInfo/followers_count">followersCount</a>
+      </li>
+      <li>
+         <a href="#friends_count"
+            title="http://www.semanticweb.org/OntoDisInfo/friends_count">friendsCount</a>
+      </li>
+      <li>
+         <a href="#is_fake" title="http://www.semanticweb.org/OntoDisInfo/is_fake">isFake</a>
+      </li>
+      <li>
+         <a href="#is_legitimate"
+            title="http://www.semanticweb.org/OntoDisInfo/is_legitimate">isLegitimate</a>
+      </li>
+      <li>
+         <a href="#listedcount"
+            title="http://www.semanticweb.org/OntoDisInfo/listedcount">listedCount</a>
+      </li>
+      <li>
+         <a href="#openedAccounts_count"
+            title="http://www.semanticweb.org/OntoDisInfo/openedAccounts_count">openedaccountsCount</a>
+      </li>
+      <li>
+         <a href="#statuses_count"
+            title="http://www.semanticweb.org/OntoDisInfo/statuses_count">statusesCount</a>
+      </li>
+      <li>
+         <a href="#userId" title="http://www.semanticweb.org/OntoDisInfo/userId">userId</a>
+      </li>
+      <li>
+         <a href="#verified" title="http://www.semanticweb.org/OntoDisInfo/verified">verified</a>
+      </li>
+   </ul>
+   <div class="entity" id="accountName">
+      <h3>accountName<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/accountName</p>
+      <div class="comment">
+         <span class="markdown">distincs account names that resemble the username of an account</span>
+      </div>
+      <div class="info">
+         <span class="markdown">refers to a Twitter account name</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#string"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#string">string</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="favourites_count">
+      <h3>favouritesCount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/favourites_count</p>
+      <div class="info">
+         <span class="markdown">refers to marked posts or tweets as favourite</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#FavouriteTweets"
+                  title="http://www.semanticweb.org/OntoDisInfo/FavouriteTweets">Favourite Tweets</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#integer"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="followers_count">
+      <h3>followersCount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/followers_count</p>
+      <div class="info">
+         <span class="markdown">refers to number of followers of a Twitter account</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Followers" title="http://www.semanticweb.org/OntoDisInfo/Followers">Followers</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#integer"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="friends_count">
+      <h3>friendsCount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/friends_count</p>
+      <div class="info">
+         <span class="markdown">refers to the number of friends of a Twitter account</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Friends" title="http://www.semanticweb.org/OntoDisInfo/Friends">Friends</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#integer"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="is_fake">
+      <h3>isFake<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/is_fake</p>
+      <div class="info">
+         <span class="markdown">refers to identified state of a Twitter account being Fake</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="is_legitimate">
+      <h3>isLegitimate<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/is_legitimate</p>
+      <div class="info">
+         <span class="markdown">refers to identified state of a Twitter account being Legitimate</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="listedcount">
+      <h3>listedCount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/listedcount</p>
+      <div class="info">
+         <span class="markdown">refers to the number of public lists the user account participates into</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#PublicAffiliationMembership"
+                  title="http://www.semanticweb.org/OntoDisInfo/PublicAffiliationMembership">Public Affiliation Membership</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#integer"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="openedAccounts_count">
+      <h3>openedaccountsCount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/openedAccounts_count</p>
+      <div class="info">
+         <span class="markdown">refers to the number of different account a Twitter user has</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topDataProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#User" title="http://www.semanticweb.org/OntoDisInfo/User">User</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#integer"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="statuses_count">
+      <h3>statusesCount<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/statuses_count</p>
+      <div class="info">
+         <span class="markdown">refers to the number of posts of a Twitter Account</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#integer"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#integer">integer</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="userId">
+      <h3>userId<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/userId</p>
+      <div class="info">
+         <span class="markdown">refers to user identifier</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#User" title="http://www.semanticweb.org/OntoDisInfo/User">User</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#string"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#string">string</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="verified">
+      <h3>verified<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/OntoDisInfo/verified</p>
+      <div class="info">
+         <span class="markdown">refers to account authenticated by Twitter as belonging to the person,</span>
+      </div>
+      <div class="description">
+         <p>
+            <strong>has characteristics:
+                </strong> functional</p>
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#AccountType"
+                  title="http://www.semanticweb.org/OntoDisInfo/AccountType">Account Type</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                  target="_blank"
+                  title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+</div>
+</div>
+</div>
+    
+
+
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>
